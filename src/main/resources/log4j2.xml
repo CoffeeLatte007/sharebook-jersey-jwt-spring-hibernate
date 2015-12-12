@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="OFF">
+<Appenders>
+    <File name="file" fileName="${sys:user.home}/sharebook_log/sharebook.log">
+        <PatternLayout>
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %p %c{1.} [%t] %m %ex%n</Pattern>
+        </PatternLayout>
+    </File>
+    <Console name="console" target="SYSTEM_OUT">
+        <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+    </Console>
+</Appenders>
+    <Loggers>
+        <Root level="DEBUG">
+            <Appender-ref ref="Console" level="DEBUG"/>
+            <Appender-ref ref="file" level="DEBUG"/>
+        </Root>
+    </Loggers>
+</configuration>
+<!--暂时只配置debug级别的，在开发阶段，在windows下面文件输出C:\Users\Administor在Ubuntu下是/home/eric-->

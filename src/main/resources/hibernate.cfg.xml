@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+        <!-- Database connection settings -->
+        <!-- 链接数据库的驱动 -->
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+
+        <property name="connection.url">jdbc:mysql://localhost:3306/shareBook</property>
+        <!-- 链接数据库的用户名 -->
+        <property name="connection.username">root</property>
+        <!-- 链接数据库的密码 -->
+        <property name="connection.password">123</property>
+
+
+        <!-- SQL dialect -->
+        <!--
+		方言
+		告诉hibernate使用什么样的数据库，hibernate就会在底层拼接什么样的sql语句-->
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+
+        <!-- Enable Hibernate's automatic session context management -->
+        <!-- jdbc本地事务管理，把getCurrentSession的seesion绑定到当前线程-->
+        <property name="current_session_context_class">thread</property>
+
+        <!-- Echo all executed SQL to stdout -->
+        <property name="show_sql">true</property>
+        <property name="format_sql">true</property>
+        <!-- Drop and re-create the database schema on startup -->
+        <property name="hbm2ddl.auto">update</property>
+
+        <mapping class="com.lclizhao.sharebook.daomain.Book"/>
+        <mapping class="com.lclizhao.sharebook.daomain.User"/>
+        <mapping class="com.lclizhao.sharebook.daomain.User_Book"/>
+        <mapping class="com.lclizhao.sharebook.daomain.Annotation"/>
+    </session-factory>
+</hibernate-configuration>
